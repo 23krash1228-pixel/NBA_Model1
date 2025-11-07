@@ -9,55 +9,64 @@ from bs4 import BeautifulSoup  # ✅ You added this
 import requests  # ✅ required for scraping
 
 try:
-    print("🏀 Starting NBA model run (using NBAstuffer web scrape)...")
+# --- STEP 1: Pull NBAstuffer CSV (stable for automation) ---
+import pandas as pd
 
-    # --- STEP 1: Pull NBAstuffer HTML page ---
-    url = "https://www.nbastuffer.com/2025-2026/"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-        "Accept-Language": "en-US,en;q=0.9"
-    }
-    response = requests.get(url, headers=headers, timeout=15)
-    response.raise_for_status()
-    html = response.text
+# NBAstuffer’s team stats CSV (example path for 2025-26)
+csv_url = "https://www.nbastuffer.com/wp-content/uploads/2025-2026/NBA_Stats_Team.csv"
 
-    # --- STEP 2: Parse the HTML for the embedded table ---
-    soup = BeautifulSoup(html, "html.parser")
-    table = soup.find("table")
+# Read the CSV
+raw = pd.read_csv(csv_url)
 
-    if not table:
-        raise ValueError("Could not find any <table> tag on NBAstuffer. Page may have changed format.")
+# (Optional) save a copy for debugging so you can see columns if needed
+raw.to_csv("logs/raw_nbastuffer.csv", index=False)
 
-    df = pd.read_html(str(table))[0]
+# --- STEP 2: Normalize columns so code is robust to name changes ---
+# make a mapping from any “look alike” to the names we want
+norm_map = {}
+upper_cols = {c.upper(): c for c in raw.columns}
 
-    print(f"✅ Found table with {len(df)} rows and {len(df.columns)} columns")
+# Try to grab the three important columns using flexible matches
+def pick(col_names, candidates):
+    # return the first column in this CSV whose UPPER name matches any candidate
+    for cand in candidates:
+        if cand in upper_cols:
+            return upper_cols[cand]
+    # if not found, try contains style matches
+    for c_up, c_orig in upper_cols.items():
+        if any(tok in c_up for tok in candidates):
+            return c_orig
+    return None
 
-    # --- STEP 3: Auto-clean and detect Off/Def columns ---
-    df.columns = [c.strip().upper() for c in df.columns]
+team_col = pick(upper_cols, ["TEAM"])
+off_col  = pick(upper_cols, ["OFFRTG", "OFF_RTG", "OFF RATING", "ORTG", "OFFENSIVE RATING"])
+def_col  = pick(upper_cols, ["DEFRTG", "DEF_RTG", "DEF RATING", "DRTG", "DEFENSIVE RATING"])
 
-    team_col = next((c for c in df.columns if "TEAM" in c), None)
-    off_col = next((c for c in df.columns if "OFF" in c), None)
-    def_col = next((c for c in df.columns if "DEF" in c), None)
+if not all([team_col, off_col, def_col]):
+    raise ValueError(f"Could not find columns. Got: {list(raw.columns)}")
 
-    if not all([team_col, off_col, def_col]):
-        raise ValueError(f"Could not detect Off/Def columns. Found: {df.columns.tolist()}")
+df = raw.rename(columns={team_col: "Team", off_col: "OffRtg", def_col: "DefRtg"}).copy()
 
-    df.rename(columns={team_col: "Team", off_col: "OffRtg", def_col: "DefRtg"}, inplace=True)
-    df["Power"] = (df["OffRtg"].astype(float) - df["DefRtg"].astype(float)).round(2)
+# ensure numeric
+df["OffRtg"] = pd.to_numeric(df["OffRtg"], errors="coerce")
+df["DefRtg"] = pd.to_numeric(df["DefRtg"], errors="coerce")
 
-    print("✅ Successfully extracted team ratings from NBAstuffer")
+# --- STEP 3: Compute Power ---
+df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
 
-    # --- STEP 4: Format output ---
-    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-    lines = [f"NBA Team Ratings - {timestamp}", ""]
-    for _, row in df.iterrows():
-        team = row["Team"]
-        off = row["OffRtg"]
-        deff = row["DefRtg"]
-        power = row["Power"]
-        lines.append(f"{team}: OffRtg {off}, DefRtg {deff}, Power {power}")
+# --- STEP 4: build text lines (same as before) ---
+from datetime import datetime
+timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+lines = [f"NBA Team Ratings - {timestamp}", ""]
+for _, row in df.iterrows():
+    team  = row["Team"]
+    off   = row["OffRtg"]
+    deff  = row["DefRtg"]
+    power = row["Power"]
+    lines.append(f"{team}: OffRtg {off}, DefRtg {deff}, Power {power}")
 
-    content = "\n".join(lines)
+content = "\n".join(lines)
 
-except Exception as e:  # ✅ This closes the try: block
-    print(f"❌ Model failed: {e}")
+# write to file (your code probably already does this; keep just one writer)
+with open("logs/latest_results.txt", "w", encoding="utf-8") as f:
+    f.write(content)
