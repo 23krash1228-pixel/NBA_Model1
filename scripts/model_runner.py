@@ -9,6 +9,16 @@ from bs4 import BeautifulSoup  # ✅ You added this
 import requests  # ✅ required for scraping
 
 try:
+import os
+import traceback
+from datetime import datetime
+
+# make sure logs folder exists
+os.makedirs("logs", exist_ok=True)
+
+log_file = "logs/latest_results.txt"
+error_file = "logs/error_log.txt"
+
     print("✅ Starting NBA model run...")
 
     # --- STEP 0: Setup folders ---
@@ -48,11 +58,9 @@ try:
     print("✅ Model complete — saved to logs/latest_results.txt")
 
 except Exception as e:
-    import traceback, sys
-    from datetime import datetime
+    with open(error_file, "w") as f:
+        f.write(f"Error occurred at {datetime.utcnow()} UTC\n")
+        traceback.print_exc(file=f)
+    print(f"❌ Model failed – see {error_file}")
+    raise  # keep this so GitHub marks the run as failed (exit code 1)
 
-    with open("logs/error_log.txt", "w", encoding="utf-8") as f:
-        f.write(f"Error occurred at {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}\n")
-        f.write(traceback.format_exc())
-    print("❌ Model failed — see logs/error_log.txt")
-    sys.exit(1)
