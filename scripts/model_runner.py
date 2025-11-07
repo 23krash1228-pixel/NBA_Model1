@@ -49,7 +49,7 @@ try:
     player_df = pd.DataFrame(player_rows)
 
     # Calculate average player stats per team
-       TEAM_AVGS = player_df.groupby("TEAM")[["PPG", "APG", "RPG"]].mean().round(1).reset_index()
+        TEAM_AVGS = player_df.groupby("TEAM")[["PPG", "APG", "RPG"]].mean().round(1).reset_index()
         df = df.merge(TEAM_AVGS, how="left", on="TEAM")
 
     # Add roster size (optional)
