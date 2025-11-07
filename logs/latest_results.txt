@@ -1,32 +1,32 @@
-NBA Team Ratings – 2025-11-07 04:06:34 UTC
+NBA Team Ratings – 2025-11-07 04:09:58 UTC
 
-Atlanta: OffRtg N/A, DefRtg N/A, Power 0
-Boston: OffRtg N/A, DefRtg N/A, Power 0
-Brooklyn: OffRtg N/A, DefRtg N/A, Power 0
-Charlotte: OffRtg N/A, DefRtg N/A, Power 0
-Chicago: OffRtg N/A, DefRtg N/A, Power 0
-Cleveland: OffRtg N/A, DefRtg N/A, Power 0
-Dallas: OffRtg N/A, DefRtg N/A, Power 0
-Denver: OffRtg N/A, DefRtg N/A, Power 0
-Detroit: OffRtg N/A, DefRtg N/A, Power 0
-Golden State: OffRtg N/A, DefRtg N/A, Power 0
-Houston: OffRtg N/A, DefRtg N/A, Power 0
-Indiana: OffRtg N/A, DefRtg N/A, Power 0
-LA Clippers: OffRtg N/A, DefRtg N/A, Power 0
-LA Lakers: OffRtg N/A, DefRtg N/A, Power 0
-Memphis: OffRtg N/A, DefRtg N/A, Power 0
-Miami: OffRtg N/A, DefRtg N/A, Power 0
-Milwaukee: OffRtg N/A, DefRtg N/A, Power 0
-Minnesota: OffRtg N/A, DefRtg N/A, Power 0
-New Orleans: OffRtg N/A, DefRtg N/A, Power 0
-New York: OffRtg N/A, DefRtg N/A, Power 0
-Oklahoma City: OffRtg N/A, DefRtg N/A, Power 0
-Orlando: OffRtg N/A, DefRtg N/A, Power 0
-Philadelphia: OffRtg N/A, DefRtg N/A, Power 0
-Phoenix: OffRtg N/A, DefRtg N/A, Power 0
-Portland: OffRtg N/A, DefRtg N/A, Power 0
-Sacramento: OffRtg N/A, DefRtg N/A, Power 0
-San Antonio: OffRtg N/A, DefRtg N/A, Power 0
-Toronto: OffRtg N/A, DefRtg N/A, Power 0
-Utah: OffRtg N/A, DefRtg N/A, Power 0
-Washington: OffRtg N/A, DefRtg N/A, Power 0
+Atlanta: OffRtg 114.1, DefRtg 114.8, Power -0.7
+Boston: OffRtg 117.4, DefRtg 113.2, Power 4.2
+Brooklyn: OffRtg 112.4, DefRtg 125.1, Power -12.7
+Charlotte: OffRtg 119.0, DefRtg 119.0, Power 0.0
+Chicago: OffRtg 118.6, DefRtg 113.9, Power 4.7
+Cleveland: OffRtg 114.2, DefRtg 112.6, Power 1.6
+Dallas: OffRtg 103.4, DefRtg 110.7, Power -7.3
+Denver: OffRtg 121.8, DefRtg 111.1, Power 10.7
+Detroit: OffRtg 114.8, DefRtg 110.4, Power 4.4
+Golden State: OffRtg 115.6, DefRtg 113.6, Power 2.0
+Houston: OffRtg 124.3, DefRtg 111.3, Power 13.0
+Indiana: OffRtg 106.7, DefRtg 114.2, Power -7.5
+LA Clippers: OffRtg 115.4, DefRtg 118.9, Power -3.5
+LA Lakers: OffRtg 119.2, DefRtg 116.2, Power 3.0
+Memphis: OffRtg 112.1, DefRtg 117.9, Power -5.8
+Miami: OffRtg 116.1, DefRtg 111.6, Power 4.5
+Milwaukee: OffRtg 117.6, DefRtg 116.9, Power 0.7
+Minnesota: OffRtg 118.0, DefRtg 119.8, Power -1.8
+New Orleans: OffRtg 109.0, DefRtg 122.0, Power -13.0
+New York: OffRtg 120.5, DefRtg 115.2, Power 5.3
+Oklahoma City: OffRtg 119.0, DefRtg 107.8, Power 11.2
+Orlando: OffRtg 113.3, DefRtg 114.7, Power -1.4
+Philadelphia: OffRtg 120.7, DefRtg 116.8, Power 3.9
+Phoenix: OffRtg 114.6, DefRtg 118.0, Power -3.4
+Portland: OffRtg 115.7, DefRtg 113.2, Power 2.5
+Sacramento: OffRtg 114.8, DefRtg 118.2, Power -3.4
+San Antonio: OffRtg 118.1, DefRtg 109.8, Power 8.3
+Toronto: OffRtg 118.1, DefRtg 115.6, Power 2.5
+Utah: OffRtg 113.4, DefRtg 117.4, Power -4.0
+Washington: OffRtg 106.4, DefRtg 121.9, Power -15.5
