@@ -80,7 +80,7 @@ try:
     # --- STEP 4: Save summary ---
     with open(log_file, "w", encoding="utf-8") as f:
         for _, row in df.iterrows():
-            f.write(f"{row['Team']}: OffRtg {row['OffRtg']}, DefRtg {row['DefRtg']}, Power {row['Power']}\n")
+            f.write(f"{row['Team']}: OffRtg {row['oEFF']}, DefRtg {row['dEEF']}, Power {row['Power']}\n")
 
     print("✅ Model complete — saved to logs/latest_results.txt")
 
