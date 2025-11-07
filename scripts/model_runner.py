@@ -17,6 +17,10 @@ try:
     url = "https://www.nbastuffer.com/2025-2026/"
     tables = pd.read_html(url)
     df = tables[0]
+url = "https://www.nbastuffer.com/2025-2026/"
+tables = pd.read_html(url)
+print("✅ Successfully fetched data from NBAStuffer")  # <--- add this
+df = tables[0]
 
     # --- STEP 2: Rename columns for consistency ---
     df = df.rename(columns={
