@@ -48,11 +48,10 @@ try:
 
 except Exception as e:
     error_log = "logs/error_log.txt"
-    os.makedirs("logs", exist_ok=True)
     with open(error_log, "w", encoding="utf-8") as f:
         f.write(f"Error occurred at {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}\n")
-        f.write(str(e) + "\n\n")
-        traceback.print_exc(file=f)
+        f.write(traceback.format_exc())
 
     print(f"❌ Model failed – see {error_log}")
-    sys.exit(1)
+    raise  # Let GitHub show the real error instead of forced exit
+
