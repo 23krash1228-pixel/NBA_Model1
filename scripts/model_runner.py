@@ -41,8 +41,8 @@ try:
     # --- STEP 5: Save results ---
     with open(log_file, "w", encoding="utf-8") as f:
         f.write(content)
-    print("✅ Model pulled from NBA Stuffer and
     print("✅ Model pulled from NBA Stuffer and saved to logs/latest_results.txt")
+
 
 except Exception as e:
     error_log = "logs/error_log.txt"
