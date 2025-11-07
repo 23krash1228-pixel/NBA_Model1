@@ -27,10 +27,12 @@ jobs:
           git commit -m "update" || echo "No changes to commit"
           git push
 
-      - name: Send email with results
+            - name: Send email with results (always)
+        if: always()   # 👈 ensures this runs even if model_runner.py fails
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: |
           python scripts/email_results.py
+
