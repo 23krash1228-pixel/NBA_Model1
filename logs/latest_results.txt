@@ -1,4 +1,4 @@
-NBA Team Ratings – 2025-11-07 04:16:58 UTC
+NBA Team Ratings – 2025-11-07 04:21:40 UTC
 
 Atlanta: OffRtg 114.1, DefRtg 114.8, Power -0.7
 Boston: OffRtg 117.4, DefRtg 113.2, Power 4.2
