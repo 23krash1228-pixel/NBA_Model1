@@ -16,11 +16,8 @@ try:
     # --- STEP 1: Pull latest table from nbastuffer.com ---
     url = "https://www.nbastuffer.com/2025-2026/"
     tables = pd.read_html(url)
+    print("✅ Successfully fetched data from NBAStuffer")
     df = tables[0]
-url = "https://www.nbastuffer.com/2025-2026/"
-tables = pd.read_html(url)
-print("✅ Successfully fetched data from NBAStuffer")  # <--- add this
-df = tables[0]
 
     # --- STEP 2: Rename columns for consistency ---
     df = df.rename(columns={
@@ -34,7 +31,7 @@ df = tables[0]
 
     # --- STEP 4: Format results ---
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-    lines = [f"NBA Team Ratings – {timestamp}", ""]
+    lines = [f"NBA Team Ratings - {timestamp}", ""]
     for _, row in df.iterrows():
         team = row.get("Team", "Unknown")
         off = row.get("OffRtg", "N/A")
@@ -47,16 +44,15 @@ df = tables[0]
     # --- STEP 5: Save results ---
     with open(log_file, "w", encoding="utf-8") as f:
         f.write(content)
-    print("✅ Model pulled from NBA Stuffer and saved to logs/latest_results.txt")
-
-
+    print("✅ Model pulled from NBAStuffer and saved to logs/latest_results.txt")
 
 except Exception as e:
     error_log = "logs/error_log.txt"
+    os.makedirs("logs", exist_ok=True)
     with open(error_log, "w", encoding="utf-8") as f:
         f.write(f"Error occurred at {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}\n")
         f.write(str(e) + "\n\n")
         traceback.print_exc(file=f)
 
-    print(f"❌ Model failed — see {error_log}")
+    print(f"❌ Model failed – see {error_log}")
     sys.exit(1)
