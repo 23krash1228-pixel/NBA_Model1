@@ -35,7 +35,33 @@ try:
 
 
     # Read the CSV
-    raw = pd.read_csv(csv_url)
+    import requests
+    from bs4 import BeautifulSoup
+    import pandas as pd
+
+    print("📥 Fetching data from NBAstuffer...")
+
+    # URL for 2024-25 team stats page
+    url = "https://www.nbastuffer.com/2024-2025-nba-team-stats/"
+
+    # Make the request look like a normal browser
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # will stop if the site is down
+
+    # Parse the HTML
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # Find the first table on the page (the big team stats one)
+    table = soup.find("table")
+
+    # Convert the HTML table to a DataFrame
+    raw = pd.read_html(str(table))[0]
+
+    # Save it to logs
+    raw.to_csv("logs/raw_nbastuffer.csv", index=False)
+    print("✅ Successfully pulled NBAstuffer data as HTML table")
+
 
     # (Optional) save a copy for debugging so you can see columns if needed
     raw.to_csv("logs/raw_nbastuffer.csv", index=False)
