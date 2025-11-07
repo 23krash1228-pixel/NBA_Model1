@@ -7,7 +7,7 @@ import traceback
 import sys
 
 try:
-    raise Exception("Testing the error alert system")
+    
 
     # --- STEP 0: Setup folders ---
     os.makedirs("logs", exist_ok=True)
