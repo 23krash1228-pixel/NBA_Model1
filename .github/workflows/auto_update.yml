@@ -8,24 +8,17 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Run model update
+      - name: Run NBA Model
         run: |
           pip install -r requirements.txt
           python scripts/model_runner.py
-
-            - name: Commit and push updates
-        run: |
-          git config user.name "bot"
-          git config user.email "bot@github.com"
-          git add logs/latest_results.txt
-          git commit -m "update" || echo "No changes to commit"
-          git push
 
       - name: Commit and push updates
         run: |
@@ -35,7 +28,7 @@ jobs:
           git commit -m "update" || echo "No changes to commit"
           git push
 
-      - name: Send email with results (always)
+      - name: Send email with results
         if: always()  # ensures this runs even if model_runner.py fails
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -49,4 +42,3 @@ jobs:
             echo "No error log found, sending success email..."
           fi
           python scripts/email_results.py
-
