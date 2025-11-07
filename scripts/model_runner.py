@@ -38,7 +38,7 @@ try:
     for p in players:
         player_rows.append({
             "Player": p.get("Player", "Unknown"),
-            "Team": p.get("Team", "Unknown"),
+            "TEAM": p.get("TEAM", "Unknown"),
             "PPG": p.get("PPG", 0),
             "APG": p.get("APG", 0),
             "RPG": p.get("RPG", 0)
@@ -49,18 +49,18 @@ try:
     player_df = pd.DataFrame(player_rows)
 
     # Calculate average player stats per team
-    team_avgs = player_df.groupby("Team")[["PPG", "APG", "RPG"]].mean().round(1).reset_index()
-    df = df.merge(team_avgs, how="left", on="Team")
+    team_avgs = player_df.groupby("TEAM")[["PPG", "APG", "RPG"]].mean().round(1).reset_index()
+    df = df.merge(TEAM_avgs, how="left", on="TEAM")
 
     # Add roster size (optional)
-    df["RosterSize"] = df["Team"].apply(lambda t: len(rosters.get(t, [])))
+    df["RosterSize"] = df["TEAM"].apply(lambda t: len(rosters.get(t, [])))
 
     # --- STEP 5: Save results to log file ---
     with open(log_file, "w", encoding="utf-8") as f:
         f.write(f"NBA Model Update — {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}\n\n")
         for _, row in df.iterrows():
             f.write(
-                f"{row['Team']}: "
+                f"{row['TEAM']}: "
                 f"OffRtg {row.get('OffRtg', 'N/A')}, "
                 f"DefRtg {row.get('DefRtg', 'N/A')}, "
                 f"Power {row.get('Power', 'N/A')}, "
