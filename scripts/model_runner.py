@@ -7,61 +7,60 @@ import traceback
 import sys
 
 try:
-    print("🏀 Starting NBA model run...")
+    import requests
+from bs4 import BeautifulSoup
+import re
+import io
 
-    # --- STEP 0: Setup folders ---
-    os.makedirs("logs", exist_ok=True)
-    log_file = "logs/latest_results.txt"
+print("🏀 Starting NBA model run (using NBAstuffer web scrape)...")
 
-# --- STEP 1: Pull latest table dynamically from NBAstuffer ---
-    url = "https://www.nbastuffer.com/2025-2026/"
-    tables = pd.read_html(url)
+# --- STEP 1: Pull NBAstuffer HTML page ---
+url = "https://www.nbastuffer.com/2025-2026/"
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    "Accept-Language": "en-US,en;q=0.9"
+}
+response = requests.get(url, headers=headers, timeout=15)
+response.raise_for_status()
+html = response.text
 
-    # Try to find the table that actually contains offensive/defensive ratings
-    df = None
-    for t in tables:
-        cols = [c.lower() for c in t.columns.astype(str)]
-        if any("off" in c for c in cols) and any("def" in c for c in cols):
-            df = t
-            break
+# --- STEP 2: Parse the HTML for the embedded table ---
+soup = BeautifulSoup(html, "html.parser")
+table = soup.find("table")
 
-    if df is None:
-        raise ValueError("Could not find Off/Def Rating table on NBAstuffer.")
+if not table:
+    raise ValueError("Could not find any <table> tag on NBAstuffer. Page may have changed format.")
 
-    # Normalize column names
-    df.columns = [c.strip().title().replace("Off", "OffRtg").replace("Def", "DefRtg").replace("Team", "Team") for c in df.columns]
+df = pd.read_html(str(table))[0]
 
-    # Extract the key columns that exist
-    team_col = next((c for c in df.columns if "Team" in c), None)
-    off_col = next((c for c in df.columns if "Off" in c), None)
-    def_col = next((c for c in df.columns if "Def" in c), None)
+print(f"✅ Found table with {len(df)} rows and {len(df.columns)} columns")
 
-    if not all([team_col, off_col, def_col]):
-        raise ValueError(f"Column mismatch: found {df.columns.tolist()}")
+# --- STEP 3: Auto-clean and detect Off/Def columns ---
+df.columns = [c.strip().upper() for c in df.columns]
 
-    # --- STEP 3: Compute Power Rating ---
-    df["Power"] = (df[off_col].astype(float) - df[def_col].astype(float)).round(2)
+# Find matching columns
+team_col = next((c for c in df.columns if "TEAM" in c), None)
+off_col = next((c for c in df.columns if "OFF" in c), None)
+def_col = next((c for c in df.columns if "DEF" in c), None)
 
-    # --- STEP 4: Format results ---
-    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-    lines = [f"NBA Team Ratings - {timestamp}", ""]
-    for _, row in df.iterrows():
-        team = row.get(team_col, "Unknown")
-        off = row.get(off_col, "N/A")
-        deff = row.get(def_col, "N/A")
-        power = row.get("Power", "N/A")
-        lines.append(f"{team}: OffRtg {off}, DefRtg {deff}, Power {power}")
+if not all([team_col, off_col, def_col]):
+    raise ValueError(f"Could not detect Off/Def columns. Found: {df.columns.tolist()}")
 
-    content = "\n".join(lines)
+# Rename and compute power
+df.rename(columns={team_col: "Team", off_col: "OffRtg", def_col: "DefRtg"}, inplace=True)
+df["Power"] = (df["OffRtg"].astype(float) - df["DefRtg"].astype(float)).round(2)
 
-    # --- STEP 5: Save results ---
-    with open(log_file, "w", encoding="utf-8") as f:
-        f.write(content)
-    print("✅ Model pulled from NBA Stuffer and saved to logs/latest_results.txt")
+print("✅ Successfully extracted team ratings from NBAstuffer")
 
-except Exception as e:
-    error_log = "logs/error_log.txt"
-    with open(error_log, "w", encoding="utf-8") as f:
-        f.write(f"Error occurred at {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}\n")
-        f.write(traceback.format_exc())
-    print(f"❌ Model failed – see {error_log}")
+# --- STEP 4: Format output ---
+timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+lines = [f"NBA Team Ratings - {timestamp}", ""]
+for _, row in df.iterrows():
+    team = row["Team"]
+    off = row["OffRtg"]
+    deff = row["DefRtg"]
+    power = row["Power"]
+    lines.append(f"{team}: OffRtg {off}, DefRtg {deff}, Power {power}")
+
+content = "\n".join(lines)
+
