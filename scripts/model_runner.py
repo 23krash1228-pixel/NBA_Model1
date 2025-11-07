@@ -26,10 +26,10 @@ try:
     # --- Load rosters and player stats ---
     
     with open("data/rosters.json", "r", encoding="utf-8") as f:
-    rosters = json.load(f)
+        rosters = json.load(f)
 
     with open("data/player_stats.json", "r", encoding="utf-8") as f:
-    players = json.load(f)
+        players = json.load(f)
 
     # --- STEP 0: Setup folders ---
     import pandas as pd
