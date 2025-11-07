@@ -24,6 +24,7 @@ try:
     import json
 
     # --- Load rosters and player stats ---
+    
     with open("data/rosters.json", "r", encoding="utf-8") as f:
     rosters = json.load(f)
 
