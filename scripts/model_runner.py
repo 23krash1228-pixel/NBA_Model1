@@ -35,18 +35,16 @@ try:
     # --- STEP 4: Merge player stats into team stats ---
     # Create a DataFrame from player_stats.json
     player_rows = []
-    for player_name, info in players.items():
-        team = info.get("team", "Unknown")
-        ppg = info.get("ppg", 0)
-        apg = info.get("apg", 0)
-        rpg = info.get("rpg", 0)
+    for p in players:
         player_rows.append({
-            "Player": player_name,
-            "Team": team,
-            "PPG": ppg,
-            "APG": apg,
-            "RPG": rpg
+            "Player": p.get("Player", "Unknown"),
+            "Team": p.get("Team", "Unknown"),
+            "PPG": p.get("PPG", 0),
+            "APG": p.get("APG", 0),
+            "RPG": p.get("RPG", 0)
         })
+
+
 
     player_df = pd.DataFrame(player_rows)
 
