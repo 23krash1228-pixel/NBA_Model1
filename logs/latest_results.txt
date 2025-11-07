@@ -1,4 +1,32 @@
-Model run at 2025-11-07 03:28:20 UTC
-New Orleans Pelicans: 2.66 edge
-Atlanta Hawks: -0.72 edge
-Los Angeles Lakers: -4.48 edge
+NBA Team Ratings – 2025-11-07 03:49:14 UTC
+
+Atlanta: OffRtg N/A, DefRtg N/A, Power 0
+Boston: OffRtg N/A, DefRtg N/A, Power 0
+Brooklyn: OffRtg N/A, DefRtg N/A, Power 0
+Charlotte: OffRtg N/A, DefRtg N/A, Power 0
+Chicago: OffRtg N/A, DefRtg N/A, Power 0
+Cleveland: OffRtg N/A, DefRtg N/A, Power 0
+Dallas: OffRtg N/A, DefRtg N/A, Power 0
+Denver: OffRtg N/A, DefRtg N/A, Power 0
+Detroit: OffRtg N/A, DefRtg N/A, Power 0
+Golden State: OffRtg N/A, DefRtg N/A, Power 0
+Houston: OffRtg N/A, DefRtg N/A, Power 0
+Indiana: OffRtg N/A, DefRtg N/A, Power 0
+LA Clippers: OffRtg N/A, DefRtg N/A, Power 0
+LA Lakers: OffRtg N/A, DefRtg N/A, Power 0
+Memphis: OffRtg N/A, DefRtg N/A, Power 0
+Miami: OffRtg N/A, DefRtg N/A, Power 0
+Milwaukee: OffRtg N/A, DefRtg N/A, Power 0
+Minnesota: OffRtg N/A, DefRtg N/A, Power 0
+New Orleans: OffRtg N/A, DefRtg N/A, Power 0
+New York: OffRtg N/A, DefRtg N/A, Power 0
+Oklahoma City: OffRtg N/A, DefRtg N/A, Power 0
+Orlando: OffRtg N/A, DefRtg N/A, Power 0
+Philadelphia: OffRtg N/A, DefRtg N/A, Power 0
+Phoenix: OffRtg N/A, DefRtg N/A, Power 0
+Portland: OffRtg N/A, DefRtg N/A, Power 0
+Sacramento: OffRtg N/A, DefRtg N/A, Power 0
+San Antonio: OffRtg N/A, DefRtg N/A, Power 0
+Toronto: OffRtg N/A, DefRtg N/A, Power 0
+Utah: OffRtg N/A, DefRtg N/A, Power 0
+Washington: OffRtg N/A, DefRtg N/A, Power 0
