@@ -18,6 +18,7 @@ print("DEBUG COLUMNS:", list(df.columns))
 print(df.head(3))
 
 
+
 # show columns for debugging (optional)
 print("Columns found:", list(df.columns))
 
