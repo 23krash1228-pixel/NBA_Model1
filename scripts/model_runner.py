@@ -1,3 +1,5 @@
+raise Exception("Test error for alert system")
+
 # ----------------------------
 # NBA Auto Model – NBA Stuffer Final Version
 # ----------------------------
