@@ -7,8 +7,6 @@ import traceback
 import sys
 
 try:
-    
-
     # --- STEP 0: Setup folders ---
     os.makedirs("logs", exist_ok=True)
     log_file = "logs/latest_results.txt"
