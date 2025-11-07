@@ -19,6 +19,14 @@ jobs:
           pip install -r requirements.txt
           python scripts/model_runner.py
 
+            - name: Commit and push updates
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@github.com"
+          git add logs/latest_results.txt
+          git commit -m "update" || echo "No changes to commit"
+          git push
+
       - name: Commit and push updates
         run: |
           git config user.name "bot"
@@ -27,12 +35,18 @@ jobs:
           git commit -m "update" || echo "No changes to commit"
           git push
 
-          name: Send email with results (always)
-          if: always()  # ensures this runs even if model_runner.py fails
-          env:
-            GMAIL_USER: ${{ secrets.GMAIL_USER }}
-            GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-            EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          run: |
-            python scripts/email_results.py
+      - name: Send email with results (always)
+        if: always()  # ensures this runs even if model_runner.py fails
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: |
+          echo "Checking for error log..."
+          if [ -f logs/error_log.txt ]; then
+            echo "Error log found, sending alert email..."
+          else
+            echo "No error log found, sending success email..."
+          fi
+          python scripts/email_results.py
 
