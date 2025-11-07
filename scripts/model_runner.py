@@ -13,34 +13,42 @@ try:
     os.makedirs("logs", exist_ok=True)
     log_file = "logs/latest_results.txt"
 
-    # --- STEP 1: Pull latest table from nbasuffer.com ---
+# --- STEP 1: Pull latest table dynamically from NBAstuffer ---
     url = "https://www.nbastuffer.com/2025-2026/"
     tables = pd.read_html(url)
-    df = tables[0]
 
-    # --- STEP 2: Rename columns for consistency ---
-    df = df.rename(columns={
-        "TEAM": "Team",
-        "OFFRTG": "OffRtg",
-        "DEFRTG": "DefRtg"
-    })
+    # Try to find the table that actually contains offensive/defensive ratings
+    df = None
+    for t in tables:
+        cols = [c.lower() for c in t.columns.astype(str)]
+        if any("off" in c for c in cols) and any("def" in c for c in cols):
+            df = t
+            break
 
-    # --- STEP 3: Compute Power Rating (auto-fix for column names) ---
-    df.columns = [c.strip().replace("OFFRTG", "OffRtg").replace("DEFRTG", "DefRtg") for c in df.columns]
+    if df is None:
+        raise ValueError("Could not find Off/Def Rating table on NBAstuffer.")
 
-    if "OffRtg" in df.columns and "DefRtg" in df.columns:
-        df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
-    else:
-        print("⚠️ Column mismatch: Available columns are:", list(df.columns))
-        df["Power"] = 0  # fallback
+    # Normalize column names
+    df.columns = [c.strip().title().replace("Off", "OffRtg").replace("Def", "DefRtg").replace("Team", "Team") for c in df.columns]
+
+    # Extract the key columns that exist
+    team_col = next((c for c in df.columns if "Team" in c), None)
+    off_col = next((c for c in df.columns if "Off" in c), None)
+    def_col = next((c for c in df.columns if "Def" in c), None)
+
+    if not all([team_col, off_col, def_col]):
+        raise ValueError(f"Column mismatch: found {df.columns.tolist()}")
+
+    # --- STEP 3: Compute Power Rating ---
+    df["Power"] = (df[off_col].astype(float) - df[def_col].astype(float)).round(2)
 
     # --- STEP 4: Format results ---
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
     lines = [f"NBA Team Ratings - {timestamp}", ""]
     for _, row in df.iterrows():
-        team = row.get("Team", "Unknown")
-        off = row.get("OffRtg", "N/A")
-        deff = row.get("DefRtg", "N/A")
+        team = row.get(team_col, "Unknown")
+        off = row.get(off_col, "N/A")
+        deff = row.get(def_col, "N/A")
         power = row.get("Power", "N/A")
         lines.append(f"{team}: OffRtg {off}, DefRtg {deff}, Power {power}")
 
