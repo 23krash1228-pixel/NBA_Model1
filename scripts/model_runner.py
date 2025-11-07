@@ -27,10 +27,10 @@ try:
 
     # --- STEP 3: Clean and normalize ---
     df.columns = [c.strip() for c in df.columns]  # remove extra spaces
-    if "OffRtg" in df.columns and "DefRtg" in df.columns:
+    if "oEFF" in df.columns and "dEFF" in df.columns:
         df["Power"] = (df["oEFF"] - df["dEFF"]).round(2)
     else:
-        print("⚠️ Missing expected columns (OffRtg/DefRtg) in NBAsuffer data")
+        print("⚠️ Missing expected columns (oEFF/dEFF) in NBAstuffer data")
 
     # --- STEP 4: Merge player stats into team stats ---
     # Create a DataFrame from player_stats.json
@@ -44,13 +44,13 @@ try:
             "RPG": p.get("RPG", 0)
         })
 
-
-
     player_df = pd.DataFrame(player_rows)
 
     # Calculate average player stats per team
     TEAM_AVGS = player_df.groupby("TEAM")[["PPG", "APG", "RPG"]].mean().round(1).reset_index()
-        df = df.merge(TEAM_AVGS, how="left", on="TEAM")
+
+    # Merge averages into team DataFrame
+    df = df.merge(TEAM_AVGS, how="left", on="TEAM")
 
     # Add roster size (optional)
     df["RosterSize"] = df["TEAM"].apply(lambda t: len(rosters.get(t, [])))
@@ -61,8 +61,8 @@ try:
         for _, row in df.iterrows():
             f.write(
                 f"{row['TEAM']}: "
-                f"OffRtg {row.get('OffRtg', 'N/A')}, "
-                f"DefRtg {row.get('DefRtg', 'N/A')}, "
+                f"oEFF {row.get('oEFF', 'N/A')}, "
+                f"dEFF {row.get('dEFF', 'N/A')}, "
                 f"Power {row.get('Power', 'N/A')}, "
                 f"Avg PPG {row.get('PPG', 'N/A')}, "
                 f"Avg APG {row.get('APG', 'N/A')}, "
