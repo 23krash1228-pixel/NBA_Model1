@@ -1,5 +1,5 @@
 # ----------------------------
-# NBA Auto Model – NBA Stuffer Version (auto-safe)
+# NBA Auto Model – NBA Stuffer Final Version
 # ----------------------------
 import os
 import pandas as pd
@@ -14,47 +14,16 @@ log_file = "logs/latest_results.txt"
 url = "https://www.nbastuffer.com/2025-2026/"
 tables = pd.read_html(url)
 df = tables[0]
-print("\n----------------------")
-print("🧾 DEBUG: COLUMNS FOUND →", list(df.columns))
-print("----------------------")
-print(df.head(5).to_string())
-print("----------------------\n")
 
-
-
-
-# show columns for debugging (optional)
-print("Columns found:", list(df.columns))
-
-# ---- STEP 2: try to find columns automatically ----
-# Some tables might have slightly different column headers like 'Team Name' or 'Off Rating'
-rename_map = {}
-for col in df.columns:
-    col_lower = col.lower()
-    if "team" in col_lower:
-        rename_map[col] = "Team"
-    elif "off" in col_lower and "rtg" in col_lower:
-        rename_map[col] = "OffRtg"
-    elif "def" in col_lower and "rtg" in col_lower:
-        rename_map[col] = "DefRtg"
-    elif "net" in col_lower:
-        rename_map[col] = "NetRtg"
-    elif "pts" in col_lower and "opp" not in col_lower:
-        rename_map[col] = "PTS"
-    elif "opp" in col_lower and "pts" in col_lower:
-        rename_map[col] = "OPP PTS"
-
-df = df.rename(columns=rename_map)
-
-# keep only the columns that exist
-valid_cols = [c for c in ["Team", "OffRtg", "DefRtg", "NetRtg", "PTS", "OPP PTS"] if c in df.columns]
-df = df[valid_cols]
+# ---- STEP 2: rename columns so script is stable ----
+df = df.rename(columns={
+    "TEAM": "Team",
+    "oEFF": "OffRtg",
+    "dEFF": "DefRtg"
+})
 
 # ---- STEP 3: compute Power Rating ----
-if "OffRtg" in df.columns and "DefRtg" in df.columns:
-    df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
-else:
-    df["Power"] = 0  # fallback if ratings missing
+df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
 
 # ---- STEP 4: format results ----
 timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
