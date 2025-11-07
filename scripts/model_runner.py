@@ -28,7 +28,7 @@ try:
     # --- STEP 3: Clean and normalize ---
     df.columns = [c.strip() for c in df.columns]  # remove extra spaces
     if "OffRtg" in df.columns and "DefRtg" in df.columns:
-        df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
+        df["Power"] = (df["oEFF"] - df["dEFF"]).round(2)
     else:
         print("⚠️ Missing expected columns (OffRtg/DefRtg) in NBAsuffer data")
 
