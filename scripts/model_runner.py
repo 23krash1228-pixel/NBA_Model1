@@ -21,6 +21,15 @@ try:
 
     print("✅ Starting NBA model run...")
 
+    import json
+
+    # --- Load rosters and player stats ---
+    with open("data/rosters.json", "r", encoding="utf-8") as f:
+    rosters = json.load(f)
+
+    with open("data/player_stats.json", "r", encoding="utf-8") as f:
+    players = json.load(f)
+
     # --- STEP 0: Setup folders ---
     import pandas as pd
     import os
@@ -77,10 +86,24 @@ try:
     # --- STEP 3: Compute Power Rating ---
     df["Power"] = (df["oEFF"] - df["dEFF"]).round(2)
 
+    import pandas as pd
+
+    player_df = pd.DataFrame(players)
+    team_summary = player_df.groupby("Team").agg({
+        "PPG": "mean",
+        "RPG": "mean",
+        "APG": "mean"
+    }).reset_index()
+
+    df = df.merge(team_summary, on="Team", how="left")
+
     # --- STEP 4: Save summary ---
-    with open(log_file, "w", encoding="utf-8") as f:
+        with open("logs/latest_results.txt", "w", encoding="utf-8") as f:
         for _, row in df.iterrows():
-            f.write(f"{row['Team']}: OffRtg {row['oEFF']}, DefRtg {row['dEFF']}, Power {row['Power']}\n")
+            f.write(f"{row['Team']}: OffRtg {row['OffRtg']}, DefRtg {row['DefRtg']}, "
+                    f"Power {row['Power']}, Avg PPG {row['PPG']:.1f}, "
+                    f"RPG {row['RPG']:.1f}, APG {row['APG']:.1f}\n")
+
 
     print("✅ Model complete — saved to logs/latest_results.txt")
 
