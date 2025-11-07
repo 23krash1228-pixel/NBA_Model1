@@ -26,8 +26,16 @@ try:
         "DEFRTG": "DefRtg"
     })
 
-    # --- STEP 3: Compute Power Rating ---
+    # --- STEP 3: Compute Power Rating (auto-fix for column names) ---
+# Handle possible column naming differences
+df.columns = [c.strip().replace("OFFRTG", "OffRtg").replace("DEFRTG", "DefRtg") for c in df.columns]
+
+if "OffRtg" in df.columns and "DefRtg" in df.columns:
     df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
+else:
+    print("⚠️ Column mismatch: Available columns are:", list(df.columns))
+    df["Power"] = 0  # fallback to avoid crash
+
 
     # --- STEP 4: Format results ---
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
