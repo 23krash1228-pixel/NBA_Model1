@@ -44,6 +44,7 @@ try:
     print("✅ Model pulled from NBA Stuffer and saved to logs/latest_results.txt")
 
 
+
 except Exception as e:
     error_log = "logs/error_log.txt"
     with open(error_log, "w", encoding="utf-8") as f:
