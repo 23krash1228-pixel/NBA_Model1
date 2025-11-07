@@ -31,7 +31,8 @@ try:
 
     # --- STEP 1: Pull NBAstuffer CSV (stable for automation) ---
     # NBAstuffer’s team stats CSV (example path for 2025-26)
-    csv_url = "https://www.nbastuffer.com/wp-content/uploads/2025-2026/NBA_Stats_Team.csv"
+    csv_url = "https://www.nbastuffer.com/2025-2026-nba-team-stats/"
+
 
     # Read the CSV
     raw = pd.read_csv(csv_url)
