@@ -9,15 +9,15 @@ from bs4 import BeautifulSoup  # ✅ You added this
 import requests  # ✅ required for scraping
 
 try:
-import os
-import traceback
-from datetime import datetime
+    import os
+    import traceback
+    from datetime import datetime
 
-# make sure logs folder exists
-os.makedirs("logs", exist_ok=True)
+    # make sure logs folder exists
+    os.makedirs("logs", exist_ok=True)
 
-log_file = "logs/latest_results.txt"
-error_file = "logs/error_log.txt"
+    log_file = "logs/latest_results.txt"
+    error_file = "logs/error_log.txt"
 
     print("✅ Starting NBA model run...")
 
