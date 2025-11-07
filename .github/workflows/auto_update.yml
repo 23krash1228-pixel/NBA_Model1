@@ -42,9 +42,10 @@ jobs:
             echo "No error log found, sending success email..."
           fi
           python scripts/email_results.py
-  - name: Upload logs
-    if: always()
-    uses: actions/upload-artifact@v4
-    with:
-      name: nbastuffer-logs
-      path: logs/
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nbastuffer-logs
+          path: logs/
+
