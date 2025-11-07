@@ -7,16 +7,15 @@ import traceback
 import sys
 
 try:
-    print("🧩 Starting NBA model run...")
+    print("🏀 Starting NBA model run...")
 
     # --- STEP 0: Setup folders ---
     os.makedirs("logs", exist_ok=True)
     log_file = "logs/latest_results.txt"
 
-    # --- STEP 1: Pull latest table from nbastuffer.com ---
+    # --- STEP 1: Pull latest table from nbasuffer.com ---
     url = "https://www.nbastuffer.com/2025-2026/"
     tables = pd.read_html(url)
-    print("✅ Successfully fetched data from NBAStuffer")
     df = tables[0]
 
     # --- STEP 2: Rename columns for consistency ---
@@ -27,15 +26,13 @@ try:
     })
 
     # --- STEP 3: Compute Power Rating (auto-fix for column names) ---
-# Handle possible column naming differences
-df.columns = [c.strip().replace("OFFRTG", "OffRtg").replace("DEFRTG", "DefRtg") for c in df.columns]
+    df.columns = [c.strip().replace("OFFRTG", "OffRtg").replace("DEFRTG", "DefRtg") for c in df.columns]
 
-if "OffRtg" in df.columns and "DefRtg" in df.columns:
-    df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
-else:
-    print("⚠️ Column mismatch: Available columns are:", list(df.columns))
-    df["Power"] = 0  # fallback to avoid crash
-
+    if "OffRtg" in df.columns and "DefRtg" in df.columns:
+        df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
+    else:
+        print("⚠️ Column mismatch: Available columns are:", list(df.columns))
+        df["Power"] = 0  # fallback
 
     # --- STEP 4: Format results ---
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -52,14 +49,11 @@ else:
     # --- STEP 5: Save results ---
     with open(log_file, "w", encoding="utf-8") as f:
         f.write(content)
-    print("✅ Model pulled from NBAStuffer and saved to logs/latest_results.txt")
+    print("✅ Model pulled from NBA Stuffer and saved to logs/latest_results.txt")
 
 except Exception as e:
     error_log = "logs/error_log.txt"
     with open(error_log, "w", encoding="utf-8") as f:
         f.write(f"Error occurred at {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}\n")
         f.write(traceback.format_exc())
-
     print(f"❌ Model failed – see {error_log}")
-    raise  # Let GitHub show the real error instead of forced exit
-
