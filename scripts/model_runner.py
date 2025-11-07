@@ -14,8 +14,12 @@ log_file = "logs/latest_results.txt"
 url = "https://www.nbastuffer.com/2025-2026/"
 tables = pd.read_html(url)
 df = tables[0]
-print("DEBUG COLUMNS:", list(df.columns))
-print(df.head(3))
+print("\n----------------------")
+print("🧾 DEBUG: COLUMNS FOUND →", list(df.columns))
+print("----------------------")
+print(df.head(5).to_string())
+print("----------------------\n")
+
 
 
 
