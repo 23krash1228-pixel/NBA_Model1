@@ -55,7 +55,8 @@ except Exception as e:
     error_log = "logs/error_log.txt"
     with open(error_log, "w", encoding="utf-8") as f:
         f.write(f"Error occurred at {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}\n")
-        f.write(traceback.format_exc())
+        f.write(str(e) + "\n\n")
+        traceback.print_exc(file=f)
 
     print(f"❌ Model failed — see {error_log}")
     sys.exit(1)
