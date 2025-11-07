@@ -41,8 +41,8 @@ try:
 
     print("📥 Fetching data from NBAstuffer...")
 
-    # URL for 2024-25 team stats page
-    url = "https://www.nbastuffer.com/2024-2025-nba-team-stats/"
+    # URL for 2025-26 team stats page
+    url = "https://www.nbastuffer.com/2025-2026-nba-team-stats/"
 
     # Make the request look like a normal browser
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -70,12 +70,12 @@ try:
     # make a mapping from any “look alike” to the names we want
     df = raw.rename(columns={
         "TEAM": "Team",
-        "OFFRTG": "OffRtg",
-        "DEFRTG": "DefRtg"
+        "OFFRTG": "oEFF",
+        "DEFRTG": "dEFF"
     })
 
     # --- STEP 3: Compute Power Rating ---
-    df["Power"] = (df["OffRtg"] - df["DefRtg"]).round(2)
+    df["Power"] = (df["oEFF"] - df["dEFF"]).round(2)
 
     # --- STEP 4: Save summary ---
     with open(log_file, "w", encoding="utf-8") as f:
