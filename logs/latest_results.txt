@@ -1,4 +1,4 @@
-NBA Model Update — 2025-12-24 13:35:34 UTC
+NBA Model Update — 2025-12-25 13:35:59 UTC
 
 Atlanta: oEFF 115.6, dEFF 116.4, Power -0.8, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Boston: oEFF 121.2, dEFF 114.9, Power 6.3, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
