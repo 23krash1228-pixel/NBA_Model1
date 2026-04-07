@@ -1,32 +1,32 @@
-NBA Model Update — 2026-04-06 14:12:20 UTC
+NBA Model Update — 2026-04-07 14:46:44 UTC
 
-Atlanta: oEFF 116.2, dEFF 113.5, Power 2.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Atlanta: oEFF 116.1, dEFF 113.5, Power 2.6, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Boston: oEFF 120.6, dEFF 112.6, Power 8.0, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Brooklyn: oEFF 109.1, dEFF 118.9, Power -9.8, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Charlotte: oEFF 119.7, dEFF 114.3, Power 5.4, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Chicago: oEFF 113.1, dEFF 118.4, Power -5.3, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Cleveland: oEFF 119.1, dEFF 114.9, Power 4.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Cleveland: oEFF 119.3, dEFF 115.0, Power 4.3, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Dallas: oEFF 110.9, dEFF 116.3, Power -5.4, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Denver: oEFF 122.2, dEFF 117.4, Power 4.8, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Detroit: oEFF 117.6, dEFF 109.5, Power 8.1, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Denver: oEFF 122.3, dEFF 117.6, Power 4.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Detroit: oEFF 117.4, dEFF 109.6, Power 7.8, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Golden State: oEFF 115.0, dEFF 115.3, Power -0.3, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Houston: oEFF 118.4, dEFF 113.4, Power 5.0, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Indiana: oEFF 111.1, dEFF 119.3, Power -8.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 LA Clippers: oEFF 117.6, dEFF 116.1, Power 1.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 LA Lakers: oEFF 118.4, dEFF 116.9, Power 1.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Memphis: oEFF 113.3, dEFF 118.2, Power -4.9, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Memphis: oEFF 113.5, dEFF 118.5, Power -5.0, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Miami: oEFF 116.4, dEFF 114.2, Power 2.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Milwaukee: oEFF 113.0, dEFF 119.2, Power -6.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Minnesota: oEFF 116.3, dEFF 113.1, Power 3.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 New Orleans: oEFF 114.2, dEFF 118.7, Power -4.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-New York: oEFF 120.0, dEFF 113.3, Power 6.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+New York: oEFF 119.9, dEFF 113.3, Power 6.6, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Oklahoma City: oEFF 119.1, dEFF 107.4, Power 11.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Orlando: oEFF 114.8, dEFF 114.7, Power 0.1, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Philadelphia: oEFF 115.8, dEFF 116.0, Power -0.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Orlando: oEFF 114.8, dEFF 114.6, Power 0.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Philadelphia: oEFF 115.6, dEFF 116.1, Power -0.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Phoenix: oEFF 115.7, dEFF 114.0, Power 1.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Portland: oEFF 114.2, dEFF 114.7, Power -0.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Portland: oEFF 114.4, dEFF 114.9, Power -0.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Sacramento: oEFF 111.3, dEFF 121.6, Power -10.3, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-San Antonio: oEFF 119.5, dEFF 111.2, Power 8.3, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+San Antonio: oEFF 119.5, dEFF 111.1, Power 8.4, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Toronto: oEFF 115.5, dEFF 113.3, Power 2.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Utah: oEFF 114.2, dEFF 122.7, Power -8.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Washington: oEFF 111.2, dEFF 122.6, Power -11.4, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
