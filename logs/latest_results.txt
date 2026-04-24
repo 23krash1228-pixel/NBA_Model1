@@ -1,18 +1,18 @@
-NBA Model Update — 2026-04-23 15:17:03 UTC
+NBA Model Update — 2026-04-24 14:46:29 UTC
 
-Atlanta: oEFF 108.7, dEFF 113.9, Power -5.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Atlanta: oEFF 108.9, dEFF 112.0, Power -3.1, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Boston: oEFF 115.8, dEFF 106.3, Power 9.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Cleveland: oEFF 122.5, dEFF 110.8, Power 11.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Denver: oEFF 112.1, dEFF 109.2, Power 2.9, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Cleveland: oEFF 118.6, dEFF 118.2, Power 0.4, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Denver: oEFF 107.0, dEFF 110.6, Power -3.6, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Detroit: oEFF 101.2, dEFF 99.2, Power 2.0, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Houston: oEFF 106.1, dEFF 114.9, Power -8.8, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 LA Lakers: oEFF 114.9, dEFF 106.1, Power 8.8, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Minnesota: oEFF 109.2, dEFF 112.1, Power -2.9, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-New York: oEFF 113.9, dEFF 108.7, Power 5.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Minnesota: oEFF 110.6, dEFF 107.0, Power 3.6, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+New York: oEFF 112.0, dEFF 108.9, Power 3.1, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Oklahoma City: oEFF 126.9, dEFF 101.4, Power 25.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Orlando: oEFF 99.2, dEFF 101.2, Power -2.0, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Philadelphia: oEFF 106.3, dEFF 115.8, Power -9.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Phoenix: oEFF 101.4, dEFF 126.9, Power -25.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Portland: oEFF 106.2, dEFF 111.4, Power -5.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 San Antonio: oEFF 111.4, dEFF 106.2, Power 5.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Toronto: oEFF 110.8, dEFF 122.5, Power -11.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Toronto: oEFF 118.2, dEFF 118.6, Power -0.4, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
