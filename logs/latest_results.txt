@@ -1,4 +1,4 @@
-NBA Model Update — 2026-05-12 15:41:27 UTC
+NBA Model Update — 2026-05-13 15:45:34 UTC
 
 Atlanta: oEFF 103.9, dEFF 122.0, Power -18.1, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Boston: oEFF 113.7, dEFF 110.7, Power 3.0, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
@@ -7,12 +7,12 @@ Denver: oEFF 109.3, dEFF 113.8, Power -4.5, Avg PPG N/A, Avg APG nan, Avg RPG na
 Detroit: oEFF 110.6, dEFF 107.0, Power 3.6, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Houston: oEFF 105.8, dEFF 108.5, Power -2.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 LA Lakers: oEFF 109.0, dEFF 114.2, Power -5.2, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-Minnesota: oEFF 110.1, dEFF 111.2, Power -1.1, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+Minnesota: oEFF 108.7, dEFF 112.4, Power -3.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 New York: oEFF 126.0, dEFF 105.7, Power 20.3, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Oklahoma City: oEFF 127.7, dEFF 110.2, Power 17.5, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Orlando: oEFF 102.4, dEFF 107.3, Power -4.9, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Philadelphia: oEFF 109.9, dEFF 120.5, Power -10.6, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Phoenix: oEFF 110.7, dEFF 128.8, Power -18.1, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Portland: oEFF 104.2, dEFF 117.1, Power -12.9, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
-San Antonio: oEFF 115.7, dEFF 104.3, Power 11.4, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
+San Antonio: oEFF 116.5, dEFF 103.4, Power 13.1, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
 Toronto: oEFF 111.7, dEFF 113.4, Power -1.7, Avg PPG N/A, Avg APG nan, Avg RPG nan, Roster Size 0
